@@ -30,12 +30,17 @@ export const TodoProvider = ({ children }: TodoProviderProps) => {
     //* Usualmente cuando usamos un provider tambien utilizamos reducers
     const [todoState, dispatch] = useReducer(todoReducer, INITIAL_STATE)
 
+    const toggleTodo = (id: string) => {
+        dispatch({ type: 'toggleTodo', payload: { id } })
+    }
+
     return (
         //*1- Para crear el PROVIDER, importamos nuestro context.
         //*2- Este proveedor va a ser conocido como un HOC (hight order component), que recibira por props los childrens.
         //*3- Estos children recibiran toda la informacion que compartamos en el VALUE
         <TodoContext.Provider value={{
-            todoState
+            todoState,
+            toggleTodo
         }}>
             {children}
         </TodoContext.Provider>

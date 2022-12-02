@@ -5,7 +5,8 @@ import { TodoState } from '../interface/interfaces';
 //*3- Lo EXPORTAMOS para usarlo en otros lugares
 
 export type TodoContextProps = {
-    todoState: TodoState
+    todoState: TodoState,
+    toggleTodo: (id: string) => void
 }
 
 export const TodoContext = createContext<TodoContextProps>({} as TodoContextProps)
